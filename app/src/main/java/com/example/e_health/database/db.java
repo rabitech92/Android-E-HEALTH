@@ -10,6 +10,11 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.e_health.model.Doctors;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class db  extends SQLiteOpenHelper {
 
     public db(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
@@ -30,6 +35,13 @@ public class db  extends SQLiteOpenHelper {
     private  static final String DESCRIPTION = "description";
     private  static final String PASSWORD = "password";
 
+    //DOCTORS
+    private  static final String TABLE = "Doctors";
+    private  static final String id = "id";
+    private  static final String name = "doctorName";
+    private  static final String address= "doctorAddress";
+    private  static final String email = "email";
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String query ="CREATE TABLE user (id INTEGER PRIMARY KEY AUTOINCREMENT,"+
@@ -37,6 +49,15 @@ public class db  extends SQLiteOpenHelper {
                 "description TEXT,"+
                 "password TEXT)";
         sqLiteDatabase.execSQL(query);
+
+        // Doctors table
+
+        String query2 ="CREATE TABLE doctors (id INTEGER PRIMARY KEY AUTOINCREMENT,"+
+
+                "doctorName TEXT,"+
+                "doctorAddress TEXT,"+
+                "email TEXT)";
+        sqLiteDatabase.execSQL(query2);
 
 
     }
@@ -56,6 +77,19 @@ public class db  extends SQLiteOpenHelper {
         Db.insert(TABLE_NAME,null, values);
         Db.close();
     }
+
+    public void addDoctor(Doctors doc){
+        SQLiteDatabase Db =this.getWritableDatabase();
+        ContentValues values =new ContentValues();
+
+        values.put("doctorName", doc.getDoctorName());
+        values.put("doctorAddress",doc.getDoctorAddress() );
+        values.put("email",doc.getEmail());
+
+        Db.insert("Doctors",null, values);
+        Db.close();
+    }
+
     public  int login(String userName, String password){
         String [] arr = new String [2];
         arr[0] =userName;
@@ -67,4 +101,26 @@ public class db  extends SQLiteOpenHelper {
         }
         return  0;
     }
+
+    public ArrayList<HashMap<String ,String>> getDoctors(){
+        HashMap<String,String> doctor;
+        SQLiteDatabase db=this.getWritableDatabase();
+        Cursor c = db.rawQuery("select * from doctors ",null);
+        ArrayList<HashMap<String, String>> doctorList =new ArrayList<>(c.getCount());
+        if (c.moveToFirst()){
+            do {
+                doctor =new HashMap<>();
+                doctor.put("id",c.getString(0));
+                doctor.put("userName",c.getString(1));
+                doctor.put("address",c.getString(2));
+                doctor.put("Email",c.getString(3));
+                doctorList.add(doctor);
+
+            }while (c.moveToFirst());
+        }
+        db.close();
+        return doctorList;
+
+    }
+
 }

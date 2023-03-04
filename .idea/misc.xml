@@ -3,9 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Module-8/app/src/main/res/layout/activity_home.xml" value="0.1" />
+        <entry key="..\:/Module-8/app/src/main/res/drawable-v24/ic_baseline_delete_24.xml" value="0.2115" />
+        <entry key="..\:/Module-8/app/src/main/res/layout/activity_add_doctor.xml" value="0.22" />
+        <entry key="..\:/Module-8/app/src/main/res/layout/activity_doctor_list_view.xml" value="0.20416666666666666" />
+        <entry key="..\:/Module-8/app/src/main/res/layout/activity_home.xml" value="0.18" />
         <entry key="..\:/Module-8/app/src/main/res/layout/activity_main.xml" value="0.12222222222222222" />
         <entry key="..\:/Module-8/app/src/main/res/layout/activity_registration.xml" value="0.18854166666666666" />
+        <entry key="..\:/Module-8/app/src/main/res/layout/doctor_list.xml" value="0.22" />
       </map>
     </option>
   </component>
