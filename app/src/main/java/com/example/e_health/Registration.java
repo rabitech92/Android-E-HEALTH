@@ -31,6 +31,18 @@ public class Registration extends AppCompatActivity {
         Repass = findViewById(R.id.repass);
         loginbtn = findViewById(R.id.logbtn);
 
+        loginbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it = new Intent(Registration.this,MainActivity.class);
+                startActivity(it);
+            }
+        });
+
+
+
+
+
 
         btnLSignUp.setOnClickListener(new View.OnClickListener() {
             @Override

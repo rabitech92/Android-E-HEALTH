@@ -2,12 +2,15 @@ package com.example.e_health;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.e_health.database.db;
+import com.example.e_health.model.Doctors;
 
 public class AddDoctor extends AppCompatActivity {
 
@@ -34,7 +37,16 @@ public class AddDoctor extends AppCompatActivity {
                 String docEmail =DocEmail.getText().toString();
 
                 System.out.println(userName + docAddress + docEmail);
-                db database = new db(getApplicationContext(),"doctors",null,1) ;
+
+                db database = new db(getApplicationContext(),"doctors",null,1);
+                if(userName.length()==0 || docAddress.length()==0 || docEmail.length()==0){
+                    Toast.makeText(getApplicationContext(),"Please fiil all field", Toast.LENGTH_SHORT).show();
+                }else{
+                    database.addDoctor(userName,docAddress,docEmail);
+                    Toast.makeText(getApplicationContext(), "Record Inserted", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(AddDoctor.this,MainActivity.class));
+
+                }
 
             }
         });
