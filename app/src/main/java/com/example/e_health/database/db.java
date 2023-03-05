@@ -78,6 +78,7 @@ public class db  extends SQLiteOpenHelper {
         Db.close();
     }
 
+//    doctor add method start
     public void addDoctor(Doctors doc){
         SQLiteDatabase Db =this.getWritableDatabase();
         ContentValues values =new ContentValues();
@@ -89,7 +90,7 @@ public class db  extends SQLiteOpenHelper {
         Db.insert("Doctors",null, values);
         Db.close();
     }
-
+    //    doctor add method End
     public  int login(String userName, String password){
         String [] arr = new String [2];
         arr[0] =userName;
@@ -121,6 +122,12 @@ public class db  extends SQLiteOpenHelper {
         db.close();
         return doctorList;
 
+    }
+    public boolean deleteDoctor(int id){
+        SQLiteDatabase db =this.getWritableDatabase();
+        int rowCount =db.delete("doctors","id", new String[]{id+""});
+        db.close();
+        return rowCount>0;
     }
 
 }

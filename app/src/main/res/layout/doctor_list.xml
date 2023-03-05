@@ -61,7 +61,7 @@
             android:id="@+id/line_h4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.20"
+            android:layout_weight="0.25"
             android:text="Address"
             android:textSize="20sp"
             android:textAlignment="center"
@@ -83,7 +83,7 @@
             android:id="@+id/line_h6"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.25"
+            android:layout_weight="0.20"
             android:text="Action"
             android:textSize="20sp"
             android:textAlignment="center"
@@ -125,7 +125,7 @@
             android:id="@+id/line_4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.20"
+            android:layout_weight="0.25"
             android:text="Address"
             android:textSize="20sp"
             android:textAlignment="center"
@@ -143,22 +143,23 @@
             android:textColor="@color/Analogous"
 
             />
-        <TextView
-            android:id="@+id/line_6"
+
+        <ImageView
+            android:id="@+id/edit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.25"
-            android:text="Action"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:textColor="@color/Analogous"
-            />
+            android:layout_weight="0.10"
+            app:srcCompat="@drawable/ic_baseline_edit_24" />
+
+        <ImageView
+            android:id="@+id/delete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.10"
+            app:srcCompat="@drawable/ic_baseline_delete_24" />
 
 
     </LinearLayout>
-
-
-
 
 
 </LinearLayout>
